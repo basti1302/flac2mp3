@@ -19,6 +19,7 @@ function convertFlacToMp3IfNewer {
   TARGET_FILE=${TARGET_FILE%.flac}
   TARGET_FILE=${TARGET_FILE##*/}
   TARGET=$TARGET_DIR/$TARGET_FILE.mp3
+
   mkdir -p "$TARGET_DIR"
   if [ -e "$TARGET" ]; then
     if [ "$SOURCE" -nt "$TARGET" ]; then
@@ -31,6 +32,8 @@ function convertFlacToMp3IfNewer {
     echo "Converting: $SOURCE >>> $TARGET [target did not exist]"
     convertFlacToMp3 "$SOURCE" "$TARGET"
   fi
+
+  # Copy cover art etc.
   cp -uv "$SOURCE_DIR"/*.jpg "$SOURCE_DIR"/*.jpeg "$SOURCE_DIR"/*.png "$SOURCE_DIR"/*.gif "$SOURCE_DIR"/*.pdf "$SOURCE_DIR"/*.txt "$TARGET_DIR" 2> /dev/null
 }
 export -f convertFlacToMp3IfNewer
@@ -38,6 +41,5 @@ export -f convertFlacToMp3IfNewer
 pushd "$SOURCE" > /dev/null
 # Convert FLAC to MP3
 find . -type f -iname \*.flac -exec bash -c 'convertFlacToMp3IfNewer "$@"' bash {} \;
-# TODO Copy cover art (jpeg, jpg, png, ...?)
 popd > /dev/null
 
