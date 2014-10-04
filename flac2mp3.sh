@@ -20,7 +20,12 @@ function convertFlacToMp3IfNewer {
   TARGET_FILE=${TARGET_FILE##*/}
   TARGET=$TARGET_DIR/$TARGET_FILE.mp3
 
-  mkdir -p "$TARGET_DIR"
+  if [ ! -d "$TARGET_DIR" ]; then
+    mkdir -p "$TARGET_DIR"
+    chmod 777 "$TARGET_DIR"
+    echo "Created $TARGET_DIR"
+  fi
+
   if [ -e "$TARGET" ]; then
     if [ "$SOURCE" -nt "$TARGET" ]; then
       echo "Converting: $SOURCE >>> $TARGET [target existed but source was newer]"
