@@ -24,7 +24,6 @@ function convertMp3ToFlacIfNewer {
     echo "Created $TARGET_DIR"
   fi
 
-  echo !!! Checking "$TARGET"
   if [ -e "$TARGET" ]; then
     echo "$TARGET [exists]"
   else
