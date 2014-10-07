@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-SOURCE='/mnt/fileserver/media/audio/musik/__MP3_COLLECTION'
+SOURCE='/mnt/fileserver/media/audio/musik/mp3'
 
 function findMissingFlacs {
-  TARGET_DIR='/mnt/fileserver/media/audio/musik/__CD_COLLECTION'
+  TARGET_DIR='/mnt/fileserver/media/audio/musik/flac'
 
   SOURCE=$(pwd)/"$1"
   SOURCE_DIR=${SOURCE%/*}

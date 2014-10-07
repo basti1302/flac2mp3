@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SOURCE='/mnt/fileserver/media/audio/musik/__MP3_COLLECTION'
+SOURCE='/mnt/fileserver/media/audio/musik/mp3'
 
 function convertMp3ToFlac {
   ffmpeg -n -v error -i "$1" -map_metadata 0 "$2";
@@ -8,7 +8,7 @@ function convertMp3ToFlac {
 export -f convertMp3ToFlac
 
 function convertMp3ToFlacIfNewer {
-  TARGET_DIR='/mnt/fileserver/media/audio/musik/__CD_COLLECTION'
+  TARGET_DIR='/mnt/fileserver/media/audio/musik/flac'
 
   SOURCE=$(pwd)/"$1"
   SOURCE_DIR=${SOURCE%/*}

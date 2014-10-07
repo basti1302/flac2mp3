@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SOURCE='/mnt/fileserver/media/audio/musik/__CD_COLLECTION'
+SOURCE='/mnt/fileserver/media/audio/musik/flac'
 
 function convertFlacToMp3 {
   # Loses meta data
@@ -10,7 +10,7 @@ function convertFlacToMp3 {
 export -f convertFlacToMp3
 
 function convertFlacToMp3IfNewer {
-  TARGET_DIR=/mnt/fileserver/media/audio/musik/__MP3_COLLECTION
+  TARGET_DIR=/mnt/fileserver/media/audio/musik/mp3
 
   SOURCE=$(pwd)/"$1"
   SOURCE_DIR=${SOURCE%/*}
